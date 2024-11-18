@@ -28,12 +28,25 @@ jobs:
           go-version: ${{ matrix.go }}
           cache-dependency-path: '**/go.sum'
 
-      - name: Download Dependencies
+      - name: Download Dependencies API
         run: |
+          cd events-api
           go mod download
 
-      - name: Test
-        run: make cover
+      - name: Test API       
+        run: |
+          cd events-api
+          make cover
+      
+          - name: Download Dependencies API
+          run: |
+            cd events-worker
+            go mod download
+  
+      - name: Test Worker       
+        run: |
+          cd events-worker
+          make cover
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
