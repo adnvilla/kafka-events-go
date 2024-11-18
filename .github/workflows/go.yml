@@ -38,10 +38,10 @@ jobs:
           cd events-api
           make cover
       
-          - name: Download Dependencies API
-          run: |
-            cd events-worker
-            go mod download
+      - name: Download Dependencies Worker
+        run: |
+          cd events-worker
+          go mod download
   
       - name: Test Worker       
         run: |
