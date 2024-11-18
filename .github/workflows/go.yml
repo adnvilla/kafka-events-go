@@ -35,7 +35,8 @@ jobs:
 
       - name: Test API       
         run: |
-          make -C ./events-api cover
+          cd events-api
+          make cover
       
       - name: Download Dependencies Worker
         run: |
@@ -44,7 +45,8 @@ jobs:
   
       - name: Test Worker       
         run: |
-          make -C ./events-worker cover
+          cd events-worker
+          make cover
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
